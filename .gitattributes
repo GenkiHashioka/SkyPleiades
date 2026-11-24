@@ -1,0 +1,6 @@
+# 改行コードは LF にそろえる
+* text=auto eol=lf
+
+# コマンドプロンプト用のスクリプトは CRLF のままにする
+*.bat text eol=crlf
+*.cmd text eol=crlf
