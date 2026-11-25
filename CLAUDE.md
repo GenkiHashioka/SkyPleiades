@@ -6,7 +6,7 @@
 
 ## Codex プラグインのコマンド
 
-Claude は先生役、Codex はレビュー役（[ADR 0001](docs/decisions/0001-claude-teaches-codex-reviews.md)）。レビューのコマンドは、本人が実装のあとに実行する。
+レビューのコマンドは、本人が実装のあとに実行する（[ADR 0001](docs/decisions/0001-claude-teaches-codex-reviews.md)）。
 
 ```
 /codex:review --base main
@@ -17,7 +17,6 @@ Claude は先生役、Codex はレビュー役（[ADR 0001](docs/decisions/0001-
 - `--wait`（終わるまで待つ）か `--background`（裏で動かし、`/codex:status` で進み具合を見る）を付けると、どちらで動かすかの質問を省ける
 - `/codex:rescue` は使わない。review gate は無効のままにする
 - Codex が使えないとき（利用上限など）は、`/code-review` で代わりにする
-- Codex の指摘は、Claude が解説する。Claude の説明と食い違うときは、どちらかに寄せず、両方の理由を並べて示す
 
 ## セッションの区切り
 
