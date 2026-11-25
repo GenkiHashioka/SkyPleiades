@@ -21,7 +21,7 @@ SkyPleiades は、Claude Code と Codex の 2 つの AI を使って開発する
 
 ### 1. Claude Code を先生役にする
 
-概念・責務・選択肢の説明、設計メモや journal の下書き、Codex の指摘の解説、本人の説明の抜けの指摘を担う。
+概念・責務・選択肢の説明、設計書や journal の下書き、Codex の指摘の解説、本人の説明の抜けの指摘を担う。
 
 ### 2. Codex をレビュー役にする
 
