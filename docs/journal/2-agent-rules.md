@@ -32,6 +32,12 @@ Claude Code と Codex が、同じルールで動けるようにする。KotlinT
 | Claude Code の新しいセッションで、`AGENTS.md` が読み込まれる（`/context` の内訳） | 読み込まれていた | 本人 |
 | Codex が、ファイルを開かずに `AGENTS.md` の 9 章の内容を答えられる | 答えられた | 本人 |
 | `--wait` / `--background` の扱い | プラグインのコマンドの説明に、付けなければ質問すると書かれていた | Claude |
+| `/codex:review --base main` | 指摘なし | 本人が実行、Claude が出力を確認 |
+| `/codex:adversarial-review --base main`（観点：AGENTS.md と CLAUDE.md の重複・矛盾、ADR との食い違い） | approve。`CLAUDE.md` に役割分担と指摘の扱いの再掲がある、という言及があり、2 か所を削った | 本人が実行、Claude が出力を確認 |
+
+## つまずいたこと
+
+- **Codex のレビューが、モデルを理由に失敗した。** `~/.codex/config.toml` のモデルが `gpt-6.2-sol` でも `gpt-6.2-astra` でも、プラグインのレビューは「このモデルは ChatGPT のアカウントでは使えない」というエラーで止まった。同じ Codex の CLI での会話では `gpt-6.2-astra` が動いた。`gpt-6-astra` に変えるとレビューが通った。プラグインのレビューでだけ 6.2 系が使えない理由は、分かっていない
 
 ## 残したこと
 
