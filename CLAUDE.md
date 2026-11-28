@@ -20,10 +20,16 @@
 
 ## セッションの区切り
 
+- **Issue に着手するときは、`/start-issue` を使う。** 本人が `/start-issue <Issue 番号>` と打つか、「#<番号> をはじめましょう」と言ったら、Claude がこのスキルで Issue と関連する ADR を読み、ブランチ名とコマンドを示す
 - **Claude Code のセッションは、1 つの Issue につき 1 つにする。** 話題が Issue の範囲を外れたら、Claude から `/handoff` と `/clear` を勧める
-- **セッションを終えるときは、本人が `/handoff` で引き継ぎを書き、`/clear` する**
+- **セッションを終えるときは、本人が `/handoff` で引き継ぎを書き、`/clear` する。** 引き継ぎは `.claude/handoff/` に、ブランチ名の `/` を `-` に置き換えた名前で保存する
+- **新しいセッションの始めに、開始時フック（`.claude/hooks/session-start.sh`）が、今のブランチの引き継ぎを読み込む。** 起動したとき、`/clear` したとき、会話が要約されたときに動く。`main` では読み込まない
 - **Issue を終えたら、引き継ぎの中で残す価値のあるものを journal に移し、引き継ぎのファイルを削除する**
-- `/handoff` と、新しいセッションの始めに引き継ぎを読み込むフック（SessionStart フック）は、Issue #3 で用意する
+
+## `.claude/` のコミット
+
+- `.gitignore` で `.claude/` の中身をすべて外し、`settings.json`、`skills/`、`hooks/` だけを戻している。引き継ぎや `settings.local.json` は、コミットされない
+- `.claude/` に共有するフォルダやファイルを増やすときは、`.gitignore` に `!` の行を足す
 
 ## 下書きのファイル
 
